@@ -19,18 +19,9 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 // Rutas de la API
-app.get('/json', (req, res) => {
-  res.json({ 'tipo': 'saludo', 'mensaje': '¡Hola caracola!' });
-});
+import notasRoutes from './routes/notasRoutes.js';
+app.use('/api/nota', notasRoutes);
 
-app.get('/', (req, res) => {
-  res.sendFile(path.join(__dirname, '../client/index.html'));
-});
-
-// Manejar todas las demás rutas y devolver un mensaje HTML
-app.get('*', (req, res) => {
-  res.send('<h1>ERROR: Página no encontrada</h1>');
-});
 
 app.listen(PORT, () => {
   console.log(`Server is running on http://localhost:${PORT}`);
