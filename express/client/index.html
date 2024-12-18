@@ -1,9 +1,67 @@
-<html>
+<!DOCTYPE html>
+<html lang="es">
 <head>
-<title>Hola</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pruebas con express</title>
+  <link rel="stylesheet" href="https://cdn.simplecss.org/simple.min.css">
+  <script src="code.js" defer></script>
 </head>
 <body>
-<h1>Saludos desde el cliente</h1>
-<p>Hola caracoaslasdld fhslkjghfdkjh fgkj sfhdk</p>
+  <h1>Pruebas con Node + Express</h1>
+
+  <h2>Crear nota</h2>
+  <form id="frmCrearNota">
+    <label for="crearNotaNombre">Nombre:</label>
+    <input type="text" id="crearNotaNombre" name="crearNotaNombre">
+
+    <label for="crearNotaTexto">Texto:</label>
+    <input type="text" id="crearNotaTexto" name="crearNotaTexto">
+
+    <label for="crearNotaFecha">Fecha:</label> 
+    <input type="text" id="crearNotaFecha" name="crearNotaFecha" value="10/12/2025">
+
+    <label for="crearNotaUsuario_id">ID del usuario propietario:</label> 
+    <input type="number" id="crearNotaUsuario_id" name="crearNotaUsuario_id" value="1">
+    <br>
+    <button type="submit">Crear nota</button> 
+  </form>
+
+  <fieldset>
+    <legend>Información de la nota</legend>
+    <div id="crearNotaInfo" class="notice"></div>
+  </fieldset>
+
+
+
+
+  <h2>Recuperar nota</h2>
+  <form id="frmRecuperarNota">
+    <label for="recuperarNotaId">ID de la nota a recuperar:</label> 
+    <input type="number" id="recuperarNotaId" name="recuperarNotaId" value="1">
+    <br>
+    <button type="submit">Recuperar</button> 
+  </form>
+
+  <fieldset>
+    <legend>Información de la nota</legend>
+    <div id="recuperarNotaInfo" class="notice"></div>
+  </fieldset>
+
+
+  <h2>Eliminar nota</h2>
+  <form id="frmEliminarNota">
+    <label for="eliminarNotaId">ID de la nota a eliminar:</label> 
+    <input type="number" id="eliminarNotaId" name="eliminarNotaId" value="1">
+    <br>
+    <button type="submit">Eliminar</button> 
+  </form>
+
+  <fieldset>
+    <legend>Información de la nota</legend>
+    <div id="eliminarNotaInfo" class="notice"></div>
+  </fieldset>
+
+
 </body>
 </html>

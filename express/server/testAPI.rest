@@ -1,0 +1,33 @@
+GET http://localhost:3000/api/nota
+
+###
+
+GET http://localhost:3000/api/nota/2
+
+###
+
+POST http://localhost:3000/api/nota
+content-type: application/json
+
+{
+"nombre":"Saludo", 
+"texto":"Hola caracola", 
+"fecha":"18/12/2024", 
+"usuario_id":"1"
+}
+
+###
+
+DELETE http://localhost:3000/api/nota/145
+
+###
+
+PUT http://localhost:3000/api/nota/2
+content-type: application/json
+
+{
+"nombre":"Prueba", 
+"texto":"Probando probando", 
+"fecha":"10/10/2025", 
+"usuario_id":"1"
+}
