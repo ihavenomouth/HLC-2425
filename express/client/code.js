@@ -45,6 +45,10 @@ async function crearNota(event) {
 
 
 
+
+
+
+
 /**
  * Recupera una nota del servidor
  * @param {Event} event 
@@ -75,6 +79,15 @@ async function recuperarNota(event) {
     `;
   }
 }
+
+
+
+
+
+
+
+
+
 
 /**
  * Elimina una nota del servidor
@@ -109,6 +122,84 @@ async function eliminarNota(event) {
 
 
 
+
+
+/**
+ * Modifica una nota en el servidor
+ * @param {Event} event 
+ */
+async function modificarNota(event) {
+  event.preventDefault();
+
+  const nombre = document.getElementById("modificarNotaNombre").value;
+  const texto = document.getElementById("modificarNotaTexto").value;
+  const fecha = document.getElementById("modificarNotaFecha").value;
+  const usuario_id = document.getElementById("modificarNotaUsuario_id").value;
+  const id = document.getElementById("modificarNotaId").value;
+
+
+  const respuesta = await fetch("/api/nota/"+id, {
+    method: "PUT",
+    headers: {
+      "Content-Type": "application/json"
+    },
+    body: JSON.stringify({
+      nombre,
+      texto,
+      fecha,
+      usuario_id
+    })
+  });
+  const json = await respuesta.json();
+
+  if (respuesta.ok) {
+    document.getElementById("modificarNotaInfo").innerHTML = `
+      <p>Nota modificada con éxito.</p>
+    `;
+  } else {
+    document.getElementById("modificarNotaInfo").innerHTML = `
+      <p>Error al modificar la nota.</p>
+      <p>Mensaje: ${json.error}</p>
+      <p>Mensaje: ${json.message}</p>
+    `;
+  }
+}
+
+
+
+
+
+
+/**
+ * Recupera una nota del servidor
+ * @param {Event} event 
+ */
+async function recuperarNotas(event) {
+  event.preventDefault();
+
+  const respuesta = await fetch("/api/nota/" );
+  const json = await respuesta.json();
+
+  if (respuesta.ok) {
+    document.getElementById("recuperarNotasInfo").innerHTML = "";
+
+    for(let nota of json){
+      document.getElementById("recuperarNotasInfo").innerHTML += `<p>(${nota.id}) - ${nota.nombre}</p>`;
+    }
+
+  } else {
+    document.getElementById("recuperarNotasInfo").innerHTML = `
+      <p>Error al recuperar la nota.</p>
+      <p>Mensaje: ${json.error}</p>
+      <p>Mensaje: ${json.message}</p>
+    `;
+  }
+}
+
+
+
+
+
 ////////////////////
 // MAIN
 ///////////////////
@@ -120,3 +211,9 @@ frmRecuperarNota.addEventListener("submit", recuperarNota);
 
 const frmEliminarNota = document.getElementById("frmEliminarNota");
 frmEliminarNota.addEventListener("submit", eliminarNota);
+
+const frmModificarNota = document.getElementById("frmModificarNota");
+frmModificarNota.addEventListener("submit", modificarNota);
+
+const frmRecuperarNotas = document.getElementById("frmRecuperarNotas");
+frmRecuperarNotas.addEventListener("submit", recuperarNotas);

@@ -35,6 +35,11 @@
 
 
 
+
+
+
+
+
   <h2>Recuperar nota</h2>
   <form id="frmRecuperarNota">
     <label for="recuperarNotaId">ID de la nota a recuperar:</label> 
@@ -47,6 +52,14 @@
     <legend>Información de la nota</legend>
     <div id="recuperarNotaInfo" class="notice"></div>
   </fieldset>
+
+
+
+
+
+
+
+
 
 
   <h2>Eliminar nota</h2>
@@ -62,6 +75,44 @@
     <div id="eliminarNotaInfo" class="notice"></div>
   </fieldset>
 
+
+
+
+  <h2>Modificar nota</h2>
+  <form id="frmModificarNota">
+    <label for="modificarNotaId">ID de la nota a modificar:</label> 
+    <input type="number" id="modificarNotaId" name="modificarNotaId" value="1">
+    
+    <label for="modificarNotaNombre">Nombre:</label>
+    <input type="text" id="modificarNotaNombre" name="modificarNotaNombre">
+
+    <label for="modificarNotaTexto">Texto:</label>
+    <input type="text" id="modificarNotaTexto" name="modificarNotaTexto">
+
+    <label for="modificarNotaFecha">Fecha:</label> 
+    <input type="text" id="modificarNotaFecha" name="modificarNotaFecha" value="10/12/2025">
+
+    <label for="modificarNotaUsuario_id">ID del usuario propietario:</label> 
+    <input type="number" id="modificarNotaUsuario_id" name="modificarNotaUsuario_id" value="1">
+    <br>
+    <button type="submit">Modificar nota</button> 
+  </form>
+
+  <fieldset>
+    <legend>Información de la nota</legend>
+    <div id="modificarNotaInfo" class="notice"></div>
+  </fieldset>
+
+
+  <h2>Recuperar todas las nota</h2>
+  <form id="frmRecuperarNotas">
+    <button type="submit">Recuperar</button> 
+  </form>
+
+  <fieldset>
+    <legend>Información de las notas</legend>
+    <div id="recuperarNotasInfo" class="notice"></div>
+  </fieldset>
 
 </body>
 </html>
