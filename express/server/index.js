@@ -23,8 +23,13 @@ app.use(express.urlencoded({ extended: true }));
 //   res.sendFile(path.join(__dirname, '../client/index.html'));
 // });
 
+//Las rutas para las notas
 import notasRoutes from './routes/notasRoutes.js';
 app.use("/api/nota",notasRoutes);
+
+//Las rutas para los usuarios
+import usuariosRoutes from './routes/usuariosRoutes.js';
+app.use("/api/usuario",usuariosRoutes);
 
 
 
