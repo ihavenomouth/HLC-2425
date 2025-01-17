@@ -20,6 +20,12 @@ class UsuarioModel {
     const db = await dbPromise;
     return db.run('DELETE FROM USUARIO WHERE id = ?', id);
   }
+
+  async getUsuarioByEmail(email) {
+    const db = await dbPromise;
+    return db.get('SELECT * FROM USUARIO WHERE email = ?', email);
+  }
+
 }
 
 export default new UsuarioModel();

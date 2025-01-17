@@ -31,6 +31,10 @@ app.use("/api/nota",notasRoutes);
 import usuariosRoutes from './routes/usuariosRoutes.js';
 app.use("/api/usuario",usuariosRoutes);
 
+//Las rutas para el login
+import loginRoutes from './routes/loginRoutes.js';
+app.use("/api/login",loginRoutes);
+
 
 
 // app.listen(PORT, () => {
