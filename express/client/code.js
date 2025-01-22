@@ -9,21 +9,30 @@
 async function crearNota(event) {
   event.preventDefault();
 
+  const token =  localStorage.getItem("token");
+  if(!token){
+    alert("No se puede crear una nota sin haber iniciado sesión");
+    location = "/login.html";
+    return;
+  }
+
   const nombre = document.getElementById("crearNotaNombre").value;
   const texto = document.getElementById("crearNotaTexto").value;
-  const fecha = document.getElementById("crearNotaFecha").value;
-  const usuario_id = document.getElementById("crearNotaUsuario_id").value;
+  // const fecha = document.getElementById("crearNotaFecha").value;
+  const fecha = (new Date()).toLocaleDateString();
+  // const usuario_id = document.getElementById("crearNotaUsuario_id").value;
 
   const respuesta = await fetch("/api/nota", {
     method: "POST",
     headers: {
-      "Content-Type": "application/json"
+      "Content-Type": "application/json",
+      "Authorization": "Bearer " + token,
     },
     body: JSON.stringify({
       nombre,
       texto,
       fecha,
-      usuario_id
+      // usuario_id
     })
   });
   const json = await respuesta.json();
@@ -96,11 +105,21 @@ async function recuperarNota(event) {
 async function eliminarNota(event) {
   event.preventDefault();
 
+  const token =  localStorage.getItem("token");
+  if(!token){
+    alert("No se puede crear una nota sin haber iniciado sesión");
+    location = "/login.html";
+    return;
+  }
+
   const idNota = document.getElementById("eliminarNotaId").value;
   // console.log(`ID de la nota a recuperar: ${idNota}`);
 
   const respuesta = await fetch("/api/nota/"+idNota, {
-    method: "DELETE"
+    method: "DELETE",
+    headers: {
+      "Authorization": "Bearer " + token,
+    },
   });
   const json = await respuesta.json();
 
@@ -217,3 +236,12 @@ frmModificarNota.addEventListener("submit", modificarNota);
 
 const frmRecuperarNotas = document.getElementById("frmRecuperarNotas");
 frmRecuperarNotas.addEventListener("submit", recuperarNotas);
+
+
+document.querySelector("#btnLogout").addEventListener("click", e=>{
+  localStorage.removeItem("nombre");
+  localStorage.removeItem("email");
+  localStorage.removeItem("token");
+  alert("Se ha cerrado la sesión");
+  location = "/login.html";
+})
