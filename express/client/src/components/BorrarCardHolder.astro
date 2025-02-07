@@ -1,0 +1,13 @@
+---
+console.log("Hola")
+---
+
+<div id="cardHolder" class="flex flex-wrap justify-evenly gap-4 border-2 p-4">
+  <slot/>
+</div>
+
+<script>
+  document.querySelector("#cardHolder")?.addEventListener("click", e=>{
+    alert( (e.target as HTMLElement).dataset.id);
+  })
+</script>

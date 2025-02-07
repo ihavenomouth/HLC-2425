@@ -12,39 +12,18 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
 
 // Middleware para servir archivos estáticos del cliente (html, css, js, imágenes...)
-app.use(express.static(path.join(__dirname, '../client')));
+app.use(express.static(path.join(__dirname, './cliente')));
 
 // Middleware para parsear el cuerpo de las solicitudes como JSON
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
-// CORS
-import cors from 'cors';
-app.use(cors());
-
 // Rutas de la API
-// app.get('/', (req, res) => {
-//   res.sendFile(path.join(__dirname, '../client/index.html'));
-// });
-
-//Las rutas para las notas
-import notasRoutes from './routes/notasRoutes.js';
-app.use("/api/nota",notasRoutes);
-
-//Las rutas para los usuarios
 import usuariosRoutes from './routes/usuariosRoutes.js';
-app.use("/api/usuario",usuariosRoutes);
+app.use('/api/usuario', usuariosRoutes);
 
-//Las rutas para el login
 import loginRoutes from './routes/loginRoutes.js';
-app.use("/api/login",loginRoutes);
-
-
-// Última ruta: redireccionamos al proyecto cliente si no es una ruta de la API
-app.get('/', (req, res) => {
-  res.redirect('http://localhost:4321');
-});
-
+app.use("/api/login", loginRoutes);
 
 // app.listen(PORT, () => {
 //   console.log(`Server is running on http://localhost:${PORT}`);

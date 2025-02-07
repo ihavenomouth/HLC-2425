@@ -1,0 +1,36 @@
+---
+import "../styles/global.css";
+const autor = "Javier Mancera - IES Cristóbal de Monroy";
+const resultado = 23*78/6+12;
+
+import BorrarCard from "../components/BorrarCard.astro";
+import BorrarCardHolder from "../components/BorrarCardHolder.astro";
+---
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body class="max-w-2xl mx-auto p-4 dark:bg-blue-900 dark:text-blue-200">
+  <h1 class="text-3xl sm:text-5xl text-center my-16">Hola caracola, primeras pruebas con Astro y Tailwind combinados</h1>
+
+  <p class="my-4">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Sapiente dolorem ullam quisquam architecto aliquid qui id unde ex laboriosam accusantium sunt voluptatum maxime, quam excepturi minus. Et ipsum nihil inventore.</p>
+
+  <BorrarCardHolder>
+    <BorrarCard id="4" src="https://picsum.photos/id/4/100/100"/>
+    <BorrarCard id="5" src="https://picsum.photos/id/5/100/100"/>
+    <BorrarCard id="54" src="https://picsum.photos/id/54/100/100"/>
+    <BorrarCard id="55" src="https://picsum.photos/id/55/100/100"/>
+    <BorrarCard id="14" src="https://picsum.photos/id/14/100/100"/>
+    <BorrarCard id="24" src="https://picsum.photos/id/24/100/100"/>
+    <BorrarCard id="45" src="https://picsum.photos/id/45/100/100"/>
+  </BorrarCardHolder>
+  
+
+  <p class="mt-4 text-center bg-amber-400 p-4 dark:text-blue-900">{autor}{resultado}</p>
+</body>
+</html>
+
