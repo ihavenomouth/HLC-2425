@@ -1,23 +1,29 @@
 ---
-import Layout from '../layouts/Layout.astro';
-import Card from '../components/Card.astro';
+import LayoutLanding from '../layouts/LayoutLanding.astro';
+import Navbar from '../components/Navbar.astro';
+import NavbarLink from '../components/NavbarLink.astro';
+import Title from '../components/Title.astro';
+import LandingCard from '../components/landing/LandingCard.astro';
+
+import imagenNota1 from '../assets/img/notas1.jpg';
+import imagenNota2 from '../assets/img/notas2.jpg'; 
+import imagenNota3 from '../assets/img/notas3.jpg';
 ---
 
-<Layout title="Welcome to Astro.">
-	<main>
-		<h1 class="py-6 text-3xl font-bold text-green-600 underline dark:text-green-400">¡Hola caracola!</h1>
-		<p class="text-gray-400">Probando Tailwind</p>
-	</main>
+<LayoutLanding title="IntraNotas">
 
-	<section>
-		<Card title='¡Saludos!' href='/login' body="Hola caracola"/>
-	</section>
-</Layout>
+	<Navbar>
+	  <NavbarLink href='/principal' texto='Acceder'/>
+	  <NavbarLink href='/login' texto='Login'/>
+	  <NavbarLink href='/registro' texto='Registro'/>
+	</Navbar>
 
-<style>
-	/* Estilos CSS propios de esta página */
-</style>
+	<Title subtitle="Mantente al día con las últimas notas y anuncios relevantes en la empresa"/>
 
-<script>
-	/* Scripts propios de esta página */
-</script>
+	<section class="flex flex-wrap items-stretch justify-center gap-16 mb-20">
+		<LandingCard title="Regístrate" idcontrol="drawer-login" text='Una buena idea es solo el comienzo. ¡Regístrate y comparte la tuya!' image={imagenNota1} href="/registro"/>
+		<LandingCard title="Accede" href="/principal" text='Accede y explora las últimas notas de tus compañeros.' image={imagenNota2}/>
+		<LandingCard title="Participa" idcontrol="drawer-registro" text='Pregunta. Comparte. Colabora. Mejora.' image={imagenNota3} href="/login"/>
+  </section>
+
+</LayoutLanding>

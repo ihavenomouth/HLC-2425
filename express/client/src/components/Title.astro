@@ -1,0 +1,15 @@
+---
+const {subtitle} = Astro.props;
+---
+
+<section>
+  <div class="px-4 py-8 text-center lg:py-16">
+    <h1 class="mb-4 text-4xl font-extrabold leading-none tracking-tight text-green-500 md:text-5xl lg:text-6xl">Intra<span class="text-green-900 dark:text-white">Notas</span></h1>
+    {
+      subtitle?
+        <p class="mb-8 text-md lg:text-xl sm:px-16 lg:px-48 dark:text-gray-200">{subtitle}</p>
+        :
+        ""
+    }
+  </div>
+</section>
