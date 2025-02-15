@@ -12,7 +12,7 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
 
 // Middleware para servir archivos estáticos del cliente (html, css, js, imágenes...)
-app.use(express.static(path.join(__dirname, '../client')));
+app.use(express.static(path.join(__dirname, './dist')));
 
 // Middleware para parsear el cuerpo de las solicitudes como JSON
 app.use(express.json());
@@ -41,9 +41,9 @@ app.use("/api/login",loginRoutes);
 
 
 // Última ruta: redireccionamos al proyecto cliente si no es una ruta de la API
-app.get('/', (req, res) => {
-  res.redirect('http://localhost:4321');
-});
+// app.get('/', (req, res) => {
+//   res.redirect('http://localhost:4321');
+// });
 
 
 // app.listen(PORT, () => {
